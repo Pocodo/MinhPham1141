@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyneleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="layout :: link-css"></th:block>
+    <title>Them Nhan Vien</title>
+</head>
+<body>
+<th:block th:replace="layout :: header"></th:block>
+<div class="container">
+    <h1>Them Nhan Vien</h1>
+    <form th:action="@{/nhanviens/add}" th:object="${nhanvien}" method="post">
+        <div class="col-6 mb-3">
+            <label class="form-label" for="manv">Ma nhan vien:</label>
+            <input class="form-control" type="text" th:field="*{manv}" id="manv">
+
+        </div>
+
+        <div class="col-6 mb-3">
+            <label class="form-label" for="tennv">Ten Nhan Vien:</label>
+            <input class="form-control" type="text" th:field="*{tennv}" id="tennv">
+
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="phai">Phai:</label>
+            <input class="form-control" type="text" th:field="*{phai}" id="phai">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="noisinh">Noi Sinh:</label>
+            <input class="form-control" type="text" th:field="*{noisinh}" id="noisinh">
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="luong">Luong:</label>
+            <input class="form-control" type="text" th:field="*{luong}" id="luong">
+
+        </div>
+        <div class="col-6 mb-3">
+            <label class="form-label" for="phongban">Phong Ban:</label>
+            <select class="form-control" id="phongban" name="phongban.maphong">
+                <option value=" ">--Phong Ban</option>
+                <option th:each="phongban : ${phongbans}" th:value="${phongban.maphong}" th:text="${phongban.tenphong}"></option>
+            </select>
+
+        </div>
+        <input type="submit" class="btn btn-primary" value="Save">
+
+    </form>
+    <br>
+    <a th:href="@{/nhanviens}">Back to List</a>
+</div>
+<th:block th:replace="layout :: footer" ></th:block>
+</body>
+</html>
